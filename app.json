@@ -1,0 +1,11 @@
+{
+  "expo": {
+    "name": "rn-events-listing",
+    "slug": "rn-events-listing",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  },
+  "name": "rn-events-listing"
+}
