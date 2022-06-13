@@ -302,8 +302,8 @@ const CreateEvent = ({ navigation, route }) => {
             onChangeText={setEventTile}
             style={{
               alignSelf: 'flex-start',
-              marginVertical: 5,
-              marginLeft: 10,
+              marginVertical: hp(2),
+              marginLeft: wp(2),
               color: Colors.olive,
             }}
           />
@@ -317,9 +317,9 @@ const CreateEvent = ({ navigation, route }) => {
             placeholder="Description"
             placeholderTextColor={Colors.gray}
             style={{
-              marginLeft: 10,
+              marginLeft: wp(2),
               alignSelf: 'flex-start',
-              marginVertical: 5,
+              marginVertical: hp(1),
               color: Colors.olive,
             }}
           />
@@ -407,8 +407,8 @@ const CreateEvent = ({ navigation, route }) => {
               route.params.id ? EditEventCall() : CreateEventCall()
             }
             style={{
-              width: '100%',
-              height: '100%',
+              width: wp(100),
+              height: hp(100),
               justifyContent: 'center',
               alignItems: 'center',
             }}
