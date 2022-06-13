@@ -19,6 +19,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import * as Colors from '../../assests/colors';
 import moment from 'moment';
 import CalendarPicker from 'react-native-calendar-picker';
+import Styles from './styles';
 
 const EventCalenderView = ({ navigation }) => {
   const [eventList, setEventList] = useState([]);
@@ -28,7 +29,6 @@ const EventCalenderView = ({ navigation }) => {
     eventsData();
   }, []);
 
- 
   const DeleteEvent = async (id) => {
     Alert.alert('Delete', 'Are you sure you want to delete the event?', [
       {
@@ -75,7 +75,7 @@ const EventCalenderView = ({ navigation }) => {
     ]);
   };
 
-   const eventsData = async () => {
+  const eventsData = async () => {
     const localStorage = await AsyncStorage.getItem('event_listing');
 
     if (localStorage != null) {
@@ -103,13 +103,13 @@ const EventCalenderView = ({ navigation }) => {
 
   return (
     <View style={{ flex: 1 }}>
-      <View style={{ flexDirection: 'row', height: 55, marginBottom: 20 }}>
+      <View style={{ flexDirection: 'row', height: 55, marginBottom: hp(2) }}>
         <View
           style={{
             flex: 1,
             borderRadius: 5,
-            marginHorizontal: 10,
-            marginTop: 10,
+            marginHorizontal: wp(1),
+            marginTop: hp(1),
             justifyContent: 'center',
           }}
         ></View>
@@ -118,8 +118,8 @@ const EventCalenderView = ({ navigation }) => {
             flex: 1,
             backgroundColor: Colors.olive,
             borderRadius: 5,
-            marginHorizontal: 10,
-            marginTop: 10,
+            marginHorizontal: wp(1),
+            marginTop: hp(1),
             justifyContent: 'center',
           }}
         >
@@ -158,7 +158,7 @@ const EventCalenderView = ({ navigation }) => {
           borderWidth: 1,
           alignSelf: 'center',
           width: '100%',
-          marginVertical: 20,
+          marginVertical: hp(2),
         }}
       />
       {eventList.length == 0 ? (
@@ -168,7 +168,7 @@ const EventCalenderView = ({ navigation }) => {
             fontWeight: 'bold',
             fontSize: 16,
             textAlign: 'center',
-            marginTop: 60,
+            marginTop: hp(6),
           }}
         >
           No events found
@@ -179,17 +179,7 @@ const EventCalenderView = ({ navigation }) => {
           data={eventList.sort((a, b) => a.title.localeCompare(b.title))}
           renderItem={({ item, index }) => {
             return (
-              <View
-                style={{
-                  marginHorizontal: 10,
-                  borderRadius: 5,
-                  borderColor: Colors.olive,
-                  borderWidth: 2,
-                  marginBottom: 15,
-                  paddingVertical: 10,
-                  paddingHorizontal: 10,
-                }}
-              >
+              <View style={Styles.flatListView}>
                 <View style={{ flexDirection: 'row' }}>
                   <View style={{ flex: 2, justifyContent: 'center' }}>
                     <Text style={{ color: Colors.olive }}>
@@ -212,7 +202,7 @@ const EventCalenderView = ({ navigation }) => {
                         borderRadius: 35,
                         borderColor: Colors.olive,
                         borderWidth: 1,
-                        marginRight: 10,
+                        marginRight: wp(1),
                         justifyContent: 'center',
                         alignItems: 'center',
                       }}

@@ -6,6 +6,15 @@ import {
 } from 'react-native-responsive-screen';
 
 export default StyleSheet.create({
+  flatListView: {
+    marginHorizontal: wp(2),
+    borderRadius: 5,
+    borderColor: Colors.olive,
+    borderWidth: 2,
+    marginBottom: 15,
+    paddingVertical: 10,
+    paddingHorizontal: 10,
+  },
   fullContainer: {
     flex: 1,
   },

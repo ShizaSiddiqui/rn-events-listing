@@ -20,6 +20,7 @@ import DateTimePicker from '@react-native-community/datetimepicker';
 import * as Colors from '../../assests/colors';
 import moment from 'moment';
 import { Picker } from '@react-native-picker/picker';
+import Styles from './styles';
 
 const EventListView = ({ navigation }) => {
   const [selectedType, setSelectedType] = useState();
@@ -32,7 +33,6 @@ const EventListView = ({ navigation }) => {
     getEventData();
   }, []);
 
-  
   const DeleteEvent = async (id) => {
     Alert.alert('Delete', 'Are you sure you want to delete the event?', [
       {
@@ -79,7 +79,7 @@ const EventListView = ({ navigation }) => {
     ]);
   };
 
-const getEventData = async () => {
+  const getEventData = async () => {
     const localStorage = await AsyncStorage.getItem('event_listing');
 
     if (localStorage != null) {
@@ -110,7 +110,6 @@ const getEventData = async () => {
     setEventList(arr);
   };
 
-
   return (
     <View style={{ flex: 1 }}>
       <View style={{ flexDirection: 'row', height: 55 }}>
@@ -119,8 +118,8 @@ const getEventData = async () => {
             flex: 1,
             backgroundColor: Colors.olive,
             borderRadius: 5,
-            marginHorizontal: 10,
-            marginTop: 10,
+            marginHorizontal: wp(1),
+            marginTop: hp(1),
             justifyContent: 'center',
           }}
         >
@@ -178,29 +177,19 @@ const getEventData = async () => {
             fontWeight: 'bold',
             fontSize: 16,
             textAlign: 'center',
-            marginTop: 60,
+            marginTop: hp(6),
           }}
         >
           No events found
         </Text>
       ) : (
         <FlatList
-          style={{ marginTop: 20 }}
+          style={{ marginTop: hp(3) }}
           // data={eventList}
           data={eventList.sort((a, b) => a.title.localeCompare(b.title))}
           renderItem={({ item, index }) => {
             return (
-              <View
-                style={{
-                  marginHorizontal: 10,
-                  borderRadius: 5,
-                  borderColor: Colors.olive,
-                  borderWidth: 2,
-                  marginBottom: 15,
-                  paddingVertical: 10,
-                  paddingHorizontal: 10,
-                }}
-              >
+              <View style={Styles.flatListView}>
                 <View style={{ flexDirection: 'row' }}>
                   <View style={{ flex: 2, justifyContent: 'center' }}>
                     <Text style={{ color: Colors.olive }}>
